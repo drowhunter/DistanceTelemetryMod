@@ -4,7 +4,7 @@ using Reactor.API.Logging;
 using Reactor.API.Runtime.Patching;
 using UnityEngine;
 
-namespace Distance.ModTemplate
+namespace Distance.TelemetryMod
 {
 	/// <summary>
 	/// The mod's main class containing its entry point
@@ -55,3 +55,6 @@ namespace Distance.ModTemplate
 		}
 	}
 }
+
+
+

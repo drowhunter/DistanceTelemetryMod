@@ -1,8 +1,8 @@
 ﻿{
-	"FriendlyName": "Mod Template",
+	"FriendlyName": "Distance TelemetryMod",
 	"Author": "You",
 	"Contact": "N/A",
-	"ModuleFileName": "Mod.Template.dll",
+	"ModuleFileName": "Distance.TelemetryMod.dll",
 	"Dependencies": [],
 	"RequiredGSLs": [
 		"com.github.reherc/Centrifuge.Distance"
@@ -10,3 +10,5 @@
 	"SkipLoad": false,
 	"Priority": 10
 }
+
+

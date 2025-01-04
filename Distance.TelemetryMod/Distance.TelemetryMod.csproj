@@ -7,8 +7,8 @@
     <ProjectGuid>{7BCB2908-B003-45D9-BE68-50CBA5217603}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mod.Template</RootNamespace>
-    <AssemblyName>Mod.Template</AssemblyName>
+    <RootNamespace>Distance.TelemetryMod</RootNamespace>
+    <AssemblyName>Distance.TelemetryMod</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -90,7 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mod.Template.targets" />
+    <None Include="Distance.TelemetryMod.targets" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -108,3 +108,5 @@
   <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
   <Import Project="$(SolutionDir)Tool.BuildTargets\Distance.Modding.targets" />
 </Project>
+
+
