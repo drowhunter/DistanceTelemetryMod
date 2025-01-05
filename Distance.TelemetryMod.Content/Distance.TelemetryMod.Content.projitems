@@ -16,6 +16,13 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Mod\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TelemetryLibrary\MmfTelemetry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TelemetryLibrary\TelemetryBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TelemetryLibrary\UdpTelemetry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)TelemetryLibrary\TelemetryLib.shproj" />
+    <None Include="$(MSBuildThisFileDirectory)TelemetryLibrary\TelemetryLibrary.projitems" />
+  </ItemGroup>
 </Project>
-
-

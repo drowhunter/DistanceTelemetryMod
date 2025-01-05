@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31515.178
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Distance.TelemetryMod.Content", "Distance.TelemetryMod.Content\Distance.TelemetryMod.Content.shproj", "{4E7D37C7-8AFE-4F79-BAF6-4CE82D05E091}"
 EndProject
@@ -16,9 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Distance.TelemetryMod.Content\Distance.TelemetryMod.Content.projitems*{4e7d37c7-8afe-4f79-baf6-4ce82d05e091}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -35,7 +32,8 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6970D48-CD23-4427-951B-448B144F30DA}
 	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Distance.TelemetryMod.Content\Distance.TelemetryMod.Content.projitems*{4e7d37c7-8afe-4f79-baf6-4ce82d05e091}*SharedItemsImports = 13
+		Distance.TelemetryMod.Content\Distance.TelemetryMod.Content.projitems*{7bcb2908-b003-45d9-be68-50cba5217603}*SharedItemsImports = 4
+	EndGlobalSection
 EndGlobal
-
-
-
