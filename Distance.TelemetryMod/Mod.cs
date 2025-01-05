@@ -1,17 +1,18 @@
-﻿using Reactor.API.Attributes;
+﻿using Centrifuge.Distance.Game;
+
+using Reactor.API.Attributes;
 using Reactor.API.Configuration;
 using Reactor.API.Interfaces.Systems;
 using Reactor.API.Logging;
 using Reactor.API.Runtime.Patching;
-using UnityEngine;
-using Centrifuge.Distance;
-using Centrifuge.Distance.Game;
-using System.Net;
-using TelemetryLibrary;
-using System.Runtime.InteropServices;
-using HarmonyLib;
+
 using System;
-using System.Runtime.ConstrainedExecution;
+using System.Net;
+using System.Runtime.InteropServices;
+
+using TelemetryLibrary;
+
+using UnityEngine;
 
 namespace Distance.TelemetryMod
 {
@@ -57,7 +58,7 @@ namespace Distance.TelemetryMod
             // Create a log file
             Logger = LogManager.GetForCurrentAssembly();
 
-            Logger.Info("Hello Telemetry!");
+            Logger.Info("Telemetry Mod Init");
 
             RuntimePatcher.AutoPatch();
         }
@@ -72,10 +73,7 @@ namespace Distance.TelemetryMod
         {
             // Code here...
             var scene = Game.SceneName;
-
             
-
-            //var localVehicle = Vehicle.VelocityKPH;
             if (!string.IsNullOrEmpty(conn_host?.Trim()) && conn_port > 0 && conn_port < 65536)
             {
                 Logger.Info($"Sending Telemetry to {conn_host}:{conn_port}");
@@ -99,7 +97,7 @@ namespace Distance.TelemetryMod
 
             if (!_settings.ContainsKey("Host"))
             {
-                _settings["Host"] = conn_host;
+                _settings["Host"] = "127.0.0.1";
             }
             else
             {
@@ -107,7 +105,7 @@ namespace Distance.TelemetryMod
             }
             if (!_settings.ContainsKey("Port"))
             {
-                _settings["Port"] = conn_port;
+                _settings["Port"] = 12345;
             }
             else
             {
@@ -126,33 +124,27 @@ namespace Distance.TelemetryMod
 
             var car = GameObject.Find("LocalCar");
             if (car == null) return;            
-            Logger.Info("Car found " + car.name);
+            //Logger.Info("Car found " + car.name);
 
             var cRigidbody = car.GetComponent<Rigidbody>();
             if (cRigidbody == null) return;
             
-            Logger.Info("cRigidbody found ");
+            //Logger.Info("cRigidbody found ");
             var car_logic = car.GetComponent<CarLogic>();
             if (car_logic == null) return;             
-            Logger.Info("CarLogic found ");
+            //Logger.Info("CarLogic found ");
 
 
             var playerdata = FindObjectOfType<PlayerDataLocal>();
-            if (playerdata == null)
-            {
-                Logger.Error("PlayerDataLocal not found");
-                return;
-            }
-            Logger.Info("PlayerDataLocal found ");
+            if (playerdata == null) return;
+            
+            //Logger.Info("PlayerDataLocal found ");
 
             var stats = car_logic?.CarStats_;
-            if (stats == null)
-            {
-                Logger.Error("CarStats not found");
-                return;
-            }
+            if (stats == null) return;
             //LocalPlayerControlledCar localPlayerControlledCar = GetComponent<LocalPlayerControlledCar>();
 
+            
 
             Quaternion rotation = cRigidbody.rotation;
             Vector3 eulerAngles = rotation.eulerAngles;
@@ -179,7 +171,7 @@ namespace Distance.TelemetryMod
                 {
                     PacketId = packetId,
                     KPH = Vehicle.VelocityKPH,
-                    Yaw = hemiCircle(transform.rotation.eulerAngles.y),
+                    Yaw = hemiCircle(car.transform.rotation.eulerAngles.y),
                     Pitch = hemiCircle(car.transform.rotation.eulerAngles.x),
                     Roll = -hemiCircle(car.transform.rotation.eulerAngles.z),
                     Sway = centripetalForce,
@@ -234,7 +226,7 @@ namespace Distance.TelemetryMod
         }
     }
 
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct DistanceTelemetryData
     {
         public int PacketId;
@@ -257,14 +249,13 @@ namespace Distance.TelemetryMod
         public Tire TireBL;
         public Tire TireBR;
     }
-
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct Tire
     {
         public bool Contact;
         public float Position;
     }
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct Inputs
     {
         public float Gas;
